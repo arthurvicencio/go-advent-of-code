@@ -15,3 +15,6 @@ $ go run ./cmd 2024-01-1
 - [x] Day 1
   - [x] Part 1
   - [x] Part 2
+- [x] Day 2
+  - [x] Part 1
+  - [x] Part 2
