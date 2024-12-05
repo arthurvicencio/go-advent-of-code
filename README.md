@@ -18,3 +18,12 @@ $ go run ./cmd 2024-d01-p1
 - [x] Day 2
   - [x] Part 1
   - [x] Part 2
+- [x] Day 3
+  - [x] Part 1
+  - [x] Part 2
+- [x] Day 4
+  - [x] Part 1
+  - [x] Part 2
+- [x] Day 5
+  - [x] Part 1
+  - [x] Part 2
