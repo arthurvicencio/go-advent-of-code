@@ -4,9 +4,9 @@
 
 ### Run
 ```
-$ go run ./cmd {year}-{day}-{part}
+$ go run ./cmd {year}-d{day}-p{part}
 
-$ go run ./cmd 2024-01-1
+$ go run ./cmd 2024-d01-p1
 ```
 
 ## Roadmap
