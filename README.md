@@ -9,6 +9,9 @@ $ go run ./cmd {year}-d{day}-p{part}
 $ go run ./cmd 2024-d01-p1
 ```
 
+## Go files
+Every solution is encpsulated in a single go file as much as possible 
+
 ## Roadmap
 
 ### 2024
