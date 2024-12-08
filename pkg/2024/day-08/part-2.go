@@ -12,19 +12,21 @@ var input2 string
 
 type Part2 struct{}
 
+type Point_P2 struct{ X, Y int }
+
 func (p Part2) Solve() {
 	grid := make([][]string, 0)
 
-	antenas := make([]Point, 0)
-	antinodeLocations := make(map[Point]bool)
+	antenas := make([]Point_P2, 0)
+	antinodeLocations := make(map[Point_P2]bool)
 
 	for y, line := range strings.Split(input2, "\n") {
 		row := make([]string, 0)
 		for x, cell := range strings.Split(line, "") {
 			row = append(row, cell)
 			if cell != "." {
-				antenas = append(antenas, Point{x, y})
-				antinodeLocations[Point{x, y}] = true
+				antenas = append(antenas, Point_P2{x, y})
+				antinodeLocations[Point_P2{x, y}] = true
 			}
 		}
 
@@ -62,8 +64,8 @@ func (p Part2) inBoundsOfgrid(x, y int, grid [][]string) bool {
 	return x >= 0 && x <= len(grid[0])-1 && y >= 0 && y <= len(grid)-1
 }
 
-func (p Part2) getAllNextPointsInBounds(pnt Point, angle, distance float64, grid [][]string) []Point {
-	points := make([]Point, 0)
+func (p Part2) getAllNextPointsInBounds(pnt Point_P2, angle, distance float64, grid [][]string) []Point_P2 {
+	points := make([]Point_P2, 0)
 	nextPoint := pnt
 	for {
 		nextPoint = p.getNextPoint(nextPoint, angle, distance)
@@ -75,13 +77,13 @@ func (p Part2) getAllNextPointsInBounds(pnt Point, angle, distance float64, grid
 	return points
 }
 
-func (p Part2) addPointToMap(pnts []Point, m map[Point]bool) {
+func (p Part2) addPointToMap(pnts []Point_P2, m map[Point_P2]bool) {
 	for _, p := range pnts {
 		m[p] = true
 	}
 }
 
-func (p Part2) angle(p1, p2 Point) float64 {
+func (p Part2) angle(p1, p2 Point_P2) float64 {
 	// Calculate the differences
 	dx := float64(p2.X - p1.X)
 	dy := float64(p2.Y - p1.Y)
@@ -100,14 +102,14 @@ func (p Part2) angle(p1, p2 Point) float64 {
 	return angleDegrees
 }
 
-func (p Part2) getNextPoint(pnt Point, angle, distance float64) Point {
+func (p Part2) getNextPoint(pnt Point_P2, angle, distance float64) Point_P2 {
 	radians := angle * (math.Pi / 180) // Convert angle to radians
 	newX := float64(pnt.X) + distance*math.Cos(radians)
 	newY := float64(pnt.Y) + distance*math.Sin(radians)
-	return Point{int(math.Round(newX)), int(math.Round(newY))}
+	return Point_P2{int(math.Round(newX)), int(math.Round(newY))}
 }
 
-func (p Part2) distance(p1, p2 Point) float64 {
+func (p Part2) distance(p1, p2 Point_P2) float64 {
 	// Apply the distance formula
 	return math.Sqrt(math.Pow(float64(p2.X-p1.X), 2) + math.Pow(float64(p2.Y-p1.Y), 2))
 }
