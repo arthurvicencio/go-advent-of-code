@@ -9,7 +9,7 @@ import (
 //go:embed input.txt
 var input2 string
 
-type Point_P2 struct{ Y, X int }
+type Point_P2 struct{ X, Y int }
 
 type State_P2 struct {
 	Pos Point_P2
@@ -30,7 +30,7 @@ func (p Part2) Solve() {
 		for x, char := range strings.Split(line, "") {
 			row = append(row, char)
 			if char == "^" {
-				start = Point_P2{y, x}
+				start = Point_P2{x, y}
 			}
 		}
 
@@ -62,10 +62,10 @@ func (p Part2) Solve() {
 func (p Part2) isLoop(grid [][]string, start Point_P2) bool {
 	seen := make(map[State_P2]bool)
 
-	var y, x = start.Y, start.X
+	var x, y = start.X, start.Y
 	var dir int
 	for {
-		if !p.isValidCell(grid, y, x) {
+		if !p.isValidCell(grid, x, y) {
 			return false
 		}
 
@@ -79,25 +79,25 @@ func (p Part2) isLoop(grid [][]string, start Point_P2) bool {
 		seen[state] = true
 
 		directions := []Point_P2{
-			{-1, 0},
-			{0, 1},
-			{1, 0},
 			{0, -1},
+			{1, 0},
+			{0, 1},
+			{-1, 0},
 		}
 		for i, d := range directions {
 			if i != dir {
 				continue
 			}
 			var dy, dx = y + d.Y, x + d.X
-			if p.isValidCell(grid, dy, dx) && grid[dy][dx] == "#" {
+			if p.isValidCell(grid, dx, dy) && grid[dy][dx] == "#" {
 				dir = (dir + 1) % 4
 			} else {
-				y, x = dy, dx
+				x, y = dx, dy
 			}
 		}
 	}
 }
 
-func (p Part2) isValidCell(grid [][]string, y, x int) bool {
-	return y >= 0 && y <= len(grid)-1 && x >= 0 && x <= len(grid[0])-1
+func (p Part2) isValidCell(grid [][]string, x, y int) bool {
+	return x >= 0 && x <= len(grid[0])-1 && y >= 0 && y <= len(grid)-1
 }

@@ -13,7 +13,7 @@ type Part2 struct{}
 
 func (p Part2) Solve() {
 
-	type Point struct{ Y, X int }
+	type Point struct{ X, Y int }
 
 	target := "MAS"
 
@@ -31,9 +31,9 @@ func (p Part2) Solve() {
 		for x := 0; x < len(grid[y]); x++ {
 			directions := []Point{
 				{-1, -1}, // up, left
-				{-1, 1},  // up, right
+				{1, -1},  // up, right
 				{1, 1},   // down, right
-				{1, -1},  // down, left
+				{-1, 1},  // down, left
 			}
 
 			for _, direction := range directions {

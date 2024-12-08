@@ -13,7 +13,7 @@ type Part1 struct{}
 
 func (p Part1) Solve() {
 
-	type Point struct{ Y, X int }
+	type Point struct{ X, Y int }
 
 	target := "XMAS"
 
@@ -28,14 +28,14 @@ func (p Part1) Solve() {
 	for y := 0; y < len(grid); y++ {
 		for x := 0; x < len(grid[y]); x++ {
 			directions := []Point{
-				{-1, 0},  // up
-				{0, 1},   // right
-				{1, 0},   // down
-				{0, -1},  // left
+				{0, -1},  // up
+				{1, 0},   // right
+				{0, 1},   // down
+				{-1, 0},  // left
 				{-1, -1}, // up, left
-				{-1, 1},  // up, right
+				{1, -1},  // up, right
 				{1, 1},   // down, right
-				{1, -1},  // down, left
+				{-1, 1},  // down, left
 			}
 
 			for _, direction := range directions {

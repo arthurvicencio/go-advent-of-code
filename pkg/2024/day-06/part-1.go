@@ -9,7 +9,7 @@ import (
 //go:embed input.txt
 var input1 string
 
-type Point_P1 struct{ Y, X int }
+type Point_P1 struct{ X, Y int }
 
 type Part1 struct{}
 
@@ -25,7 +25,7 @@ func (p Part1) Solve() {
 		for x, char := range strings.Split(line, "") {
 			row = append(row, char)
 			if char == "^" {
-				start = Point_P1{y, x}
+				start = Point_P1{x, y}
 			}
 		}
 
@@ -34,30 +34,30 @@ func (p Part1) Solve() {
 
 	track := make(map[Point_P1]bool)
 
-	var y, x = start.Y, start.X
+	var x, y = start.X, start.Y
 	var dir int
 	for {
-		if !p.isValidCell(grid, y, x) {
+		if !p.isValidCell(grid, x, y) {
 			break
 		}
 
-		track[Point_P1{y, x}] = true
+		track[Point_P1{x, y}] = true
 
 		directions := []Point_P1{
-			{-1, 0},
-			{0, 1},
-			{1, 0},
 			{0, -1},
+			{1, 0},
+			{0, 1},
+			{-1, 0},
 		}
 		for i, d := range directions {
 			if i != dir {
 				continue
 			}
-			var dy, dx = y + d.Y, x + d.X
-			if p.isValidCell(grid, dy, dx) && grid[dy][dx] == "#" {
+			var dx, dy = x + d.X, y + d.Y
+			if p.isValidCell(grid, dx, dy) && grid[dy][dx] == "#" {
 				dir = (dir + 1) % 4
 			} else {
-				y, x = dy, dx
+				x, y = dx, dy
 			}
 		}
 	}
@@ -65,6 +65,6 @@ func (p Part1) Solve() {
 	fmt.Println(len(track))
 }
 
-func (p Part1) isValidCell(grid [][]string, y, x int) bool {
-	return y >= 0 && y <= len(grid)-1 && x >= 0 && x <= len(grid[0])-1
+func (p Part1) isValidCell(grid [][]string, x, y int) bool {
+	return x >= 0 && x <= len(grid[0])-1 && y >= 0 && y <= len(grid)-1
 }
