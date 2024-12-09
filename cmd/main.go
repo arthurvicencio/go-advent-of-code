@@ -29,7 +29,7 @@ func main() {
 	problems[name].Solve()
 }
 
-func mergeMap[A, B comparable](a, b map[A]B) {
+func mergeMap[A comparable, B any](a, b map[A]B) {
 	for i, v := range b {
 		a[i] = v
 	}
