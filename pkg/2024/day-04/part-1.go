@@ -15,7 +15,7 @@ func (p Part1) Solve() {
 
 	type Point struct{ X, Y int }
 
-	target := "XMAS"
+	const TARGET = "XMAS"
 
 	grid := make([][]string, 0)
 
@@ -58,7 +58,7 @@ func (p Part1) Solve() {
 					str += grid[dy][dx]
 				}
 
-				if str == target {
+				if str == TARGET {
 					answer++
 				}
 			}

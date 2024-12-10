@@ -15,7 +15,7 @@ func (p Part2) Solve() {
 
 	type Point struct{ X, Y int }
 
-	target := "MAS"
+	const TARGET = "MAS"
 
 	grid := make([][]string, 0)
 
@@ -59,7 +59,7 @@ func (p Part2) Solve() {
 					locations = append(locations, Point{dy, dx})
 				}
 
-				if str == target {
+				if str == TARGET {
 					foundLocations = append(foundLocations, locations)
 				}
 			}
