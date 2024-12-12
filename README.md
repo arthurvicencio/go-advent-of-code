@@ -26,7 +26,7 @@ Every solution is encpsulated in a single go file as much as possible
 - [x] Day 9
 - [x] Day 10
 - [x] Day 11
-- [ ] Day 12
+- [x] Day 12
 - [ ] Day 13
 - [ ] Day 14
 - [ ] Day 15
