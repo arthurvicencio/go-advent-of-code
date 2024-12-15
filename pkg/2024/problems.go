@@ -14,6 +14,7 @@ import (
 	twenty_twenty_four_day_11 "github.com/arthurvicencio/go-advent-of-code/pkg/2024/day-11"
 	twenty_twenty_four_day_12 "github.com/arthurvicencio/go-advent-of-code/pkg/2024/day-12"
 	twenty_twenty_four_day_14 "github.com/arthurvicencio/go-advent-of-code/pkg/2024/day-14"
+	twenty_twenty_four_day_15 "github.com/arthurvicencio/go-advent-of-code/pkg/2024/day-15"
 	"github.com/arthurvicencio/go-advent-of-code/pkg/aocutils"
 )
 
@@ -57,5 +58,8 @@ func Problems() map[string]aocutils.Problem {
 
 		"2024-d14-p1": twenty_twenty_four_day_14.Part1{},
 		"2024-d14-p2": twenty_twenty_four_day_14.Part2{},
+
+		"2024-d15-p1": twenty_twenty_four_day_15.Part1{},
+		"2024-d15-p2": twenty_twenty_four_day_15.Part2{},
 	}
 }
